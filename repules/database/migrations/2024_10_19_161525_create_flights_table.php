@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('flights', function (Blueprint $table) {
-            $table->id();
+            $table->id('flight_id');
+            $table->date('date');
+            $table-> foreignId('airline_id')-> references('airline_id')->on('airlines');
+            $table->integer('limit');
             $table->timestamps();
         });
     }
